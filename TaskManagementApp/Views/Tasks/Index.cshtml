@@ -1,0 +1,62 @@
+﻿@using TaskManagementApp.Models.Entities
+@model List<TaskItem>
+
+<h1 class="text-center mb-auto">Merhaba @ViewBag.Name</h1>
+<h2 class="text-center mb-5">Görev Listesi</h2>
+
+<div class="row" style="display: flex; justify-content: space-between">
+    <div style="flex: 1;">
+        <a class="btn btn-success" asp-controller="Tasks" asp-action="Create">Yeni Görev</a>
+    </div>
+    <div class="col d-flex flex-column" >
+        <label for="statusFilter" style="text-align: center;">Filtre</label>
+        <div class="m-auto">
+            <select id="statusDropdown" name="statusFilter" onchange="location.href = this.value;">
+                @foreach (var option in ViewBag.StatusOptions)
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Görev No</th>
+            <th>Görev Adı</th>
+            <th>Açıklama</th>
+            <th>Durum</th>
+            <th>Son Tarih</th>
+            <th>Güncelle/Arşivle/Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Id</td>
+                <td>@task.Name</td>
+                <td>@task.Description</td>
+                <td>@task.Status.ToString()</td>
+                <td>@(task.DueDate.HasValue ? task.DueDate.Value.ToString("MM/dd/yyyy") : "")</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.Id">Güncelle</a>
+                    <form asp-controller="Tasks" asp-action="ArchiveTaskById" asp-route-id="@task.Id" method="post" style="display: inline;">
+                        <input type="hidden" name="statusFilter" value="@ViewBag.Status" />
+                        <input type="checkbox" onchange="this.form.submit()" @(task.IsArchived ? "checked" : "") /> 
+                    </form>
+                    @if (task.IsArchived)
+                    {
+                        <a class="btn btn-danger btn-sm" asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.Id" onclick="return confirm('Emin misiniz?')">Sil</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger btn-sm" onclick="alert('Görev Arşivlenmeden Silinemez')">Sil</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

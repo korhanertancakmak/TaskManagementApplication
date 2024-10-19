@@ -1,0 +1,71 @@
+﻿@using TaskManagementApp.Models.Entities
+@model TaskManagementApp.Models.Entities.TaskItemDto
+@{
+    var statuses = Enum.GetValues(typeof(TaskItemStatus));
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Edit Task</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Görev No</label>
+                <div class="col-sm-8">
+                    <input class="form-control-plaintext" readonly value="@ViewData["TaskId"]" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Görev Adı</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Name" value="@Model.Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Açıklama</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control-plaintext" asp-for="Description" value="@(Model.Description ?? "No description available")"></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Durum</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="Status">
+                        @foreach (var status in statuses)
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Kayıtlı Son Tarih</label>
+                <div class="col-sm-8">
+                    <input class="form-control" readonly value="@(Model.DueDate?.ToString("yyyy-MM-dd") ?? "")" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Yeni Son Tarih</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="DueDate" />
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Onayla</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="Tasks" asp-action="Index" role="button">İptal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

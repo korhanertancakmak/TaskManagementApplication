@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hoş Geldiniz</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="text-left">
+    <h2 class="mb-3">Görev Yönetim Uygulaması(Task Management Application)</h2>
+    <h3 class="mb-2">Proje Özeti:</h3>
+    <p class="text-justify">
+        Bu case çalışması, .NET MVC Framework, Entity Framework, LINQ, MSSQL ve temel
+        frontend teknolojilerini (JavaScript, HTML, CSS) kullanarak basit bir görev yönetim sistemi
+        geliştirme becerinizi değerlendirmek amacıyla hazırlanmıştır. Bu proje, bir görev yönetim
+        uygulamasının nasıl yapılandırılacağını, veritabanı ile nasıl etkileşim kurulacağını ve temel
+        CRUD (Create, Read, Update, Delete) operasyonlarının nasıl uygulanacağını göstermenizi
+        sağlayacaktır.
+    </p>
+
+    <h3 class="mb-2">Gereksinimler:</h3>
+    <h4>Görev Yönetim Sistemi:</h4>
+    <p class="text-justify">Kullanıcılar aşağıdaki özelliklere sahip görevler oluşturabilmelidir:</p>
+    <ul>
+        <li><span class="fw-bold">Görev Adı:</span> (string, zorunlu)</li>
+        <li><span class="fw-bold">Açıklama:</span> (text, isteğe bağlı)</li>
+        <li><span class="fw-bold">Durum:</span> (enum: "Bekliyor", "Devam Ediyor", "Tamamlandı")</li>
+        <li><span class="fw-bold">Son Tarih:</span> (date, isteğe bağlı)</li>
+    </ul>
+    <p class="text-justify mb-2">
+        Kullanıcılar, görevlerin tümünü listeleyebilmeli ve duruma göre filtreleme yapabilmelidir.
+        Ayrıca kullanıcılar, görev detaylarını güncelleyebilmeli ve bir görevi silebilmelidir.
+    </p>
+
+    <h4>Veritabanı Yapısı(MSSQL):</h4>
+    <p class="text-justify mb-2">
+        Gerekli veritabanı tablolarını tasarlayıp oluşturun. Görevler için bir tablo oluşturulmalıdır. Bu tablo, yukarıda belirtilen alanları içermelidir.
+    </p>
+
+    <h4>Kullanıcı Arayüzü:</h4>
+    <p class="text-justify mb-2">
+        Basit ve temiz bir kullanıcı arayüzü oluşturun. Görev listesi, kullanıcı dostu bir şekilde gösterilmeli ve her bir görev için düzenleme veya silme seçenekleri sunulmalıdır.
+    </p>
+
+    <h4>Doğrulama:</h4>
+    <p class="text-justify mb-2">
+    Veri bütünlüğünü sağlamak için temel doğrulama kurallarını uygulayın (örneğin, Görev Adı zorunlu, Son Tarih geçerli bir tarih olmalıdır).
+    </p>
+
+    <h4>Opsiyonel Geliştirmeler (Bonus):</h4>
+    <ul class="mb-4">
+        <li><span class="text-justify fw-bold">Kullanıcı Kimlik Doğrulaması:</span>
+            Sadece giriş yapmış kullanıcıların görevleri yönetebilmesini sağlayacak bir kimlik doğrulama sistemi ekleyin.
+        </li>
+        <li><span class="text-justify fw-bold">Arşivleme:</span>
+            Görevleri kalıcı olarak silmek yerine &quot;Arşivlendi&quot; olarak işaretleme özelliği ekleyin.
+        </li>
+        <li><span class="fw-bold">AJAX:</span>
+            Görev ekleme veya güncelleme işlemleri sırasında sayfanın yeniden yüklenmesini önlemek için AJAX kullanın.
+        </li>
+    </ul>
+
+    <h3 class="mb-2">Teslimat Süresi:</h3>
+    <p class="text-justify mb-2">
+        Bu case çalışmasını aldıktan sonra 7 gün içinde tamamlayarak teslim edin. Projeyi GitHub gibi bir platforma yükleyip, linkini paylaşabilirsiniz.
+    </p>
+</div>
