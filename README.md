@@ -5,8 +5,8 @@
 This case study includes .NET MVC Framework, Entity Framework, LINQ, MSSQL and basic 
 task management system using frontend technologies (JavaScript, HTML, CSS).
 It has been prepared to evaluate your development skills. This project is a task management
-how to configure the application, how to interact with the database, and basic
-Show how to implement CRUD (Create, Read, Update, Delete) operations will provide.
+how to configure the application, how to interact with the database, and basically
+show how to implement CRUD (Create, Read, Update, Delete) operations will provide.
 </div>
 
 ## Task Management System:
