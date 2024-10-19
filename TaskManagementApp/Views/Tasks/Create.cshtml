@@ -12,7 +12,7 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Görev Adı</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="Name" />
+                    <input class="form-control" asp-for="Name" id="name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
@@ -20,14 +20,14 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Açıklama</label>
                 <div class="col-sm-8">
-                    <textarea class="form-control" asp-for="Description"></textarea>
+                    <textarea class="form-control" asp-for="Description" id="description"></textarea>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Durum</label>
                 <div class="col-sm-8">
-                    <select class="form-select" asp-for="Status">
+                    <select class="form-select" asp-for="Status" id="status">
                         @foreach (var status in statuses)
                         {
                             <option value="@status">@status</option>
@@ -39,19 +39,51 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Son Tarih</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="DueDate" />
+                    <input class="form-control" asp-for="DueDate" id="dueDate" />
                     <span asp-validation-for="DueDate" class="text-danger"></span>
                 </div>
             </div>
 
+            
+        </form>
+
             <div class="row">
                 <div class="offset-sm-4 col-sm-4 d-grid">
-                    <button type="submit" class="btn btn-primary">Ekle</button>
+                <button onclick="create()" class="btn btn-primary">Ekle</button>
                 </div>
                 <div class="col-sm-4 d-grid">
                     <a class="btn btn-outline-primary" asp-controller="Tasks" asp-action="Index" role="button">İptal</a>
                 </div>
             </div>
-        </form>
     </div>
 </div>
+
+<script>
+    function create() {
+        var name = $("#name").val();
+        var description = $("#description").val();
+        var status = $("#status").val();
+        var dueDate = $("#dueDate").val();
+
+        $.ajax({
+            url: '@Url.Action("Create", "Tasks")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                Name: name,
+                Description: description,
+                Status: status,
+                DueDate: dueDate
+            },
+            success: function (response) {
+                if (response.success) {
+                    console.log(response);
+                    alert("Yeni görev başarılı şekilde eklendi!");
+                } else {
+                    var errorMessage = response.errors.join("\n");
+                    alert("Görev ekleme başarısız:\n" + errorMessage);
+                }
+            }
+        })
+    }
+</script>

@@ -74,11 +74,6 @@ namespace TaskManagementApp.Controllers
         public IActionResult Create(TaskItemDto taskItemDto)
         {
 
-            if (string.IsNullOrEmpty(taskItemDto.Name))
-            {
-                ModelState.AddModelError("Name", "İsim zorunlu");
-            }
-
             if (taskItemDto.DueDate != null && taskItemDto.DueDate < DateTime.Now)
             {
                 ModelState.AddModelError("DueDate", "Geçmiş bir tarih olamaz. Lütfen bugünden sonraki bir tarih giriniz.");
@@ -86,7 +81,8 @@ namespace TaskManagementApp.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(taskItemDto);
+                //return View(taskItemDto);
+                return Json(new { success = false, errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)).ToList() });
             }
 
             var task = new TaskItem()
@@ -100,7 +96,8 @@ namespace TaskManagementApp.Controllers
             context.Tasks.Add(task);
             context.SaveChanges();
 
-            return RedirectToAction("Index", "Tasks");
+            //return RedirectToAction("Index", "Tasks");
+            return Json(new { success = true, redirectUrl = Url.Action("Index", "Tasks") });
         }
 
         // Implicitly [HttpGet] is added
