@@ -131,11 +131,6 @@ namespace TaskManagementApp.Controllers
                 return RedirectToAction("Index", "Tasks");
             }
 
-            if (string.IsNullOrEmpty(taskItemDto.Name))
-            {
-                ModelState.AddModelError("Name", "İsim zorunlu");
-            }
-
             if (taskItemDto.DueDate != null && taskItemDto.DueDate < DateTime.Now)
             {
                 ModelState.AddModelError("DueDate", "Geçmiş bir tarih olamaz. Lütfen bugünden sonraki bir tarih giriniz.");
@@ -143,8 +138,9 @@ namespace TaskManagementApp.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["TaskId"] = taskFromDb.Id;
-                return View(taskItemDto);
+                //ViewData["TaskId"] = taskFromDb.Id;
+                //return View(taskItemDto);
+                return Json(new { success = false, errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)).ToList() });
             }
 
             // update the taskFromDb properties with the new taskItemDto properties
@@ -155,7 +151,8 @@ namespace TaskManagementApp.Controllers
 
             context.SaveChanges();
 
-            return RedirectToAction("Index", "Tasks");
+            //return RedirectToAction("Index", "Tasks");
+            return Json(new { success = true, redirectUrl = Url.Action("Index", "Tasks") });
         }
 
         [HttpPost]
