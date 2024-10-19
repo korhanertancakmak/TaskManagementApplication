@@ -43,7 +43,9 @@ Apply basic validation rules to ensure data integrity (for example, Task Name ma
 
 ## Optional Developments:
 <div style="text-align:justify">
+  
 * User Id Validation: Add an authentication system that will only allow for the logged in users to manage tasks.
 * Archiving: Add the functionality to mark tasks as "Archived" as well as the ability to permanently delete them.
 * AJAX: Use AJAX to prevent the page to be reloaded when adding or updating tasks.
+  
 </div>
