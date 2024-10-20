@@ -3,7 +3,7 @@ using TaskManagementApp.Models.Entities;
 
 namespace TaskManagementApp.Models.DataContext
 {
-    /* Uygulamanın veritabanı bağlantı sınıfı:
+    /* Uygulamanın veritabanı bağlantı sınıfı(DataSource Injection):
      * Fields:
      *          UserAccounts (Kullanıcı hesapları): UserAccount modeli verileri,
      *          Tasks(Görevler): TaskItem modeli verileri

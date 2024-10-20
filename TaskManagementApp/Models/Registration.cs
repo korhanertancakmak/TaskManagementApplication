@@ -26,7 +26,7 @@ namespace TaskManagementApp.Models
 
         [Required(ErrorMessage = "Email Zorunlu!")]
         [MaxLength(100, ErrorMessage = "Maksimum 100 karakter girilebilir.")]
-        [RegularExpression(@"^^([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([\w-]+\.)+[a-zA-Z]{2,}))$", ErrorMessage = "Lütfen geçerli Email giriniz.")]
+        [RegularExpression(@"^([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([\w-]+\.)+[a-zA-Z]{2,}))$", ErrorMessage = "Lütfen geçerli Email giriniz.")]
         public string Email { get; set; } = "";
 
         [Required(ErrorMessage = "Kullanıcı Adı Zorunlu!")]

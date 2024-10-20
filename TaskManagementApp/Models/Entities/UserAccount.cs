@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TaskManagementApp.Models.Entities
 {
-    /* UserAccount(Kullanıcı hesabı) sınıfı(nesnesi):
+    /* Kullanıcı hesabı sınıfı(UserAccount object):
      * Fields(Props): 
      *          Eşsiz(unique) kimlik, 
      *          Kullanıcı kimlikteki adı-soyadı(zorunlu), 

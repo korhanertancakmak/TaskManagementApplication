@@ -2,7 +2,7 @@
 
 namespace TaskManagementApp.Models.Entities
 {
-    /* Görev sınıfı
+    /* Görev sınıfı(Internal Task object):
      * Fields(Props): 
      *              Eşsiz(unique) kimlik, 
      *              Görev adı(zorunlu), 

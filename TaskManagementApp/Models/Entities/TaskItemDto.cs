@@ -2,7 +2,7 @@
 
 namespace TaskManagementApp.Models.Entities
 {
-    /* Görev veri aktarım nesnesi (Data to Object) sınıfı:
+    /* Görev veri aktarım nesnesi (Data to Object) sınıfı(Exposed Task Object):
      * Fields(Props):
      *              Görev adı(zorunlu-Hata mesajı eklendi), 
      *              Görev açıklaması(isteğe bağlı)

@@ -10,7 +10,7 @@ using TaskManagementApp.Models.Entities;
 namespace TaskManagementApp.Controllers
 {
 
-    /* Hesap Kontrolünü sağlayan Controller sınıfı:
+    /* Hesap Kontrolünü sağlayan Controller sınıfı(Unauthrozied Controller):
      * Fields:
      *          Database: UserAccount tablosunu çeken field
      * 

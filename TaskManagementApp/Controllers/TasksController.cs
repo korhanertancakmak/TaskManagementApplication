@@ -6,7 +6,7 @@ using TaskManagementApp.Models.Entities;
 
 namespace TaskManagementApp.Controllers
 {
-    /* Görev kontrolünü sağlayan Controller sınıfı:
+    /* Görev kontrolünü sağlayan Controller sınıfı(Authorized Controller):
      * Fields:
      *          Database: TaskItem tablosunu çeken field
      * 
