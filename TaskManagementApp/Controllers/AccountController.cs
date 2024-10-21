@@ -37,16 +37,16 @@ namespace TaskManagementApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Registration(Registration registration)
+        public IActionResult Registration(UserAccountDto userDto)
         {
             if (ModelState.IsValid)
             {
                 var account = new UserAccount()
                 {
-                    Name = registration.Name,
-                    Email = registration.Email,
-                    UserName = registration.UserName,
-                    Password = registration.Password
+                    Name = userDto.Name,
+                    Email = userDto.Email,
+                    UserName = userDto.UserName,
+                    Password = userDto.Password
                 };
 
                 try
@@ -60,12 +60,12 @@ namespace TaskManagementApp.Controllers
                 catch (DbUpdateException)
                 {
                     ModelState.AddModelError("", "Lütfen farklı bir email ya da username girin.");
-                    return View(registration);
+                    return View(userDto);
                 }
 
                 return View();
             }
-            return View(registration);
+            return View(userDto);
         }
 
         public IActionResult Login()
@@ -81,7 +81,7 @@ namespace TaskManagementApp.Controllers
                 var user = context.UserAccounts.Where(x => x.UserName == login.UserNameOrEmail || x.Email == login.UserNameOrEmail && x.Password == login.Password).FirstOrDefault();
                 if ( user != null )
                 {
-                    // Success login
+                    // Success login-Creating Cookie
                     var claims = new List<Claim>
                     {
                         new (ClaimTypes.Name, user.Name),
